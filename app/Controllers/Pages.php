@@ -6,10 +6,21 @@
  * Time: 21:15
  */
 
-class Pages
+class Pages extends Controller
 {
-    public function __construct()
+    public function __construct() {}
+
+    public function index()
     {
-        echo 'Pages loaded';
+        $data = [
+            'title' => 'Welcome'
+        ];
+
+        $this->view('pages/index', $data);
+    }
+
+    public function about()
+    {
+        $this->view('pages/about');
     }
 }
