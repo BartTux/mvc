@@ -38,7 +38,7 @@ class Database
         $this->stmt = $this->dbh->prepare($sql);
     }
 
-    public function bind(string $param, string $value, string $type = null)
+    public function bind(string $param, string $value, $type = null)
     {
         if(is_null($type)) {
             switch(true) {

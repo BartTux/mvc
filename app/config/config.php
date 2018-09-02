@@ -19,4 +19,7 @@ define('APP_ROOT', dirname(dirname(__FILE__)));
 define('URL_ROOT', 'http://localhost/back/coursemvc1');
 
 //Site Name
-define('SITE_NAME', 'MichaelMVC');
+define('SITE_NAME', 'SharePosts');
+
+//App Version
+define('APP_VERSION', '1.0.0');
