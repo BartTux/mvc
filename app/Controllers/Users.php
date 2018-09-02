@@ -59,6 +59,7 @@ class Users extends Controller
 
                 //Register new user and check if everything is ok
                 if($this->userModel->registerNewUser($data)) {
+                    flash('register_success', 'You are registered and can log in');
                     redirect('users/login');
                 } else {
                     die('Something went wrong :(');
@@ -102,8 +103,21 @@ class Users extends Controller
                 $data['password_error'] = 'Please enter your password';
             }
 
+            if($this->userModel->findUserByEmail($data['email'])) {
+
+            } else {
+                $data['email_error'] = 'No user found';
+            }
+
             if(empty($data['email_error']) && empty($data['password_error'])) {
-                die('<p style="color: green">SUCCESS</p>');
+                $loggedInUser = $this->userModel->login($data['email'], $data['password']);
+
+                if($loggedInUser) {
+                    die('SUCCESS');
+                } else {
+                    $data['password_error'] = 'Password incorect';
+                    $this->view('users/login', $data);
+                }
             } else {
                 $this->view('users/login', $data);
             }
