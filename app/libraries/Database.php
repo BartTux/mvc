@@ -72,7 +72,7 @@ class Database
 
     public function single()
     {
-        $this->execute();
+        $this->stmt->execute();
         return $this->stmt->fetch(PDO::FETCH_OBJ);
     }
 
