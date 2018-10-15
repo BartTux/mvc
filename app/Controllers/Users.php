@@ -103,9 +103,7 @@ class Users extends Controller
                 $data['password_error'] = 'Please enter your password';
             }
 
-            if($this->userModel->findUserByEmail($data['email'])) {
-
-            } else {
+            if(!$this->userModel->findUserByEmail($data['email'])) {
                 $data['email_error'] = 'No user found';
             }
 
@@ -115,7 +113,7 @@ class Users extends Controller
                 if($loggedInUser) {
                     $this->createUserSession($loggedInUser);
                 } else {
-                    $data['password_error'] = 'Password incorect';
+                    $data['password_error'] = 'Password incorrect';
                     $this->view('users/login', $data);
                 }
             } else {
