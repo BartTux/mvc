@@ -149,6 +149,6 @@ class Users extends Controller
             $_SESSION['user_email'] = $user->email;
             $_SESSION['user_name'] = $user->name;
         }
-        redirect('pages/index');
+        redirect('posts/index');
     }
 }

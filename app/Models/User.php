@@ -28,6 +28,15 @@ class User extends Database
         }
     }
 
+    public function getUserById($id)
+    {
+        $this->db->query('SELECT * FROM users WHERE id_users = :id');
+        $this->db->bind(':id', $id);
+
+        $row = $this->db->single();
+        return $row;
+    }
+
     public function registerNewUser(array $data)
     {
         //Prepare the query
